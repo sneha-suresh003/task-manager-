@@ -1,0 +1,22 @@
+<h2>Welcome {{user}} ({{role}})</h2>
+
+<a href="/logout">Logout</a>
+
+<h3>Add Task</h3>
+<form method="POST">
+  <input name="title" placeholder="Task title">
+  <input name="assigned_to" placeholder="Assign to">
+  <button type="submit">Add</button>
+</form>
+
+<h3>Tasks</h3>
+<ul>
+  {% for task in tasks %}
+    <li>
+      {{task.title}} - {{task.assigned_to}} - {{task.status}}
+      {% if task.status != 'Done' %}
+        <a href="/update/{{task.id}}">Mark Done</a>
+      {% endif %}
+    </li>
+  {% endfor %}
+</ul>
